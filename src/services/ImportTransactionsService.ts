@@ -37,17 +37,6 @@ class ImportTransactionsService {
 
     await new Promise(resolve => parseCSV.on('end', resolve));
 
-    // const transaction = await newTransactions.reduce(
-    //   async (acc: Promise, data) => {
-    //     const result = await acc;
-    //     if (result instanceof Transaction) transactions.push(result);
-    //     return createTransactionServices.execute(data);
-    //   },
-    //   Promise.resolve(),
-    // );
-
-    // newTransactions.push(transaction);
-
     // eslint-disable-next-line no-restricted-syntax
     for await (const transaction of newTransactions) {
       const { title, type, value, category } = transaction;
